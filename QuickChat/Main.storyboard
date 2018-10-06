@@ -1044,6 +1044,10 @@
                                 <action selector="closeView:" destination="ZJi-hT-Uhs" eventType="touchUpInside" id="c77-Fm-49f"/>
                             </connections>
                         </button>
+                        <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oRc-1l-VZs">
+                            <rect key="frame" x="0.0" y="181" width="375" height="216"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        </pickerView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="E-Mail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfX-sg-Sfv">
                             <rect key="frame" x="56" y="252" width="262.5" height="20"/>
                             <constraints>
