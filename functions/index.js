@@ -18,7 +18,7 @@ exports.receiveImage = functions.database.ref('/pictures/{uid}/{id}').onCreate((
 
     const otherParams = {
         headers: {
-            "Authorization": "Bearer v^1.1#i^1#r^0#I^3#p^1#f^0#t^H4sIAAAAAAAAAOVXbWwURRju9a6FCgUjYE2p5tgCJujuzdzH3t1KLx4ttZVCC1cqlmDd250ta/d2LzuzXE+rqY02wRDDhz8IqNSQGCAigqiIgUSN4EdADFGJ/4yJgCZGUwOpBOPs3lGulfBZhMT7c9mZd995nud93pkd0FtaNqe/of9suWtc8UAv6C12ueAEUFZa8sAkd3FlSREoCHAN9M7s9fS5T83FYkpLC0sQThs6Rt7ulKZjwRmsYSxTFwwRq1jQxRTCApGERHxhk+DngJA2DWJIhsZ4G+tqmHAQBqQghCAghWA0ieiofiFnq0HnQ3IkFA7KUPLz0WAY0nmMLdSoYyLqpIbxAxhhIWAB3wqDQigo+AEXivDtjLcNmVg1dBrCASbmwBWcd80CrJeHKmKMTEKTMLHGeH2iOd5YN39R61xfQa5YXocEEYmFRz7VGjLytomahS6/DHaihYQlSQhjxhfLrTAyqRC/AOY64DtSJ/kgHw3xER5EZV6JoDGRst4wUyK5PA57RJVZxQkVkE5Ukr2SolSN5FNIIvmnRTRFY53X/ltsiZqqqMisYebPiz8eb2lhYo+pmqaKqSZWEi2MMLHYliV1rKxEFBSKRGVWhFGFh3Igv1AuW17mUSvVGrqs2qJh7yKDzEMUNRqtTbBAGxrUrDebcYXYiArj+AsahiPtdlFzVbTISt2uK0pRIbzO45UrMPw2IaaatAgazjB6wpGohhHTaVVmRk86XszbpxvXMCsJSQs+XyaT4TIBzjA7fX4AoG/ZwqaEtBKlRIbG2r2ei1ev/AKrOlQk6i0aL5BsmmLppl6lAPROJhaAwVDQn9d9JKzY6NF/DRRw9o3siLHqEBRRQBDIAV6EgbBflMaiQ2J5k/psHCgpZtmUaHYhktZECbES9ZmVQqYqC4GQ4g9Qw7IyH1XYYFRR2GRI5lmoIAQQSialaOT/1ChXa/WEZKRRi6GpUnZMDD92ZjflFtEk2QSimuudV+v6S5LENsmbTs/u9WuiaOfANImYVjnb25xkpHyGSDc1e6jDQX1DvFV6Ht5WRaUEc0xVOXeQcQ5dDq+SOBNhwzLpGc412/t6q9GFdNolxDQ0DZlt8IaUGLsd/Rbt5pdkJWkqlbHjdmN2jdvkdXpbJLeQtafPtfwSzGEoEIkEwjwPbohbrVPX1ux/sGldU2EbDEyQfBM+QHwjr0OxIucH+1zvgT7XbnqjAj4wC1aDGaXupR73xEqsEsSposJhtVOnX/km4rpQNi2qZnGpa3nVO9s7Ci5gAyvAPcNXsDI3nFBwHwNVF2dK4OSKchiBAPBOa4J2UH1x1gPv9kxd1vBTe9PL1u5fH1owRTlxYB2Xcf8GyoeDXK6SIuqMomdXNy1r8exZf0d/W/3Dk1Z9NvW1nnH7J4Q3nDo2fe6Lp4+/3rXkzb13nq6YseBk35yDnZm/dj7IffncR/veej7msXaOPywPvnrmh/e3VfeDad3rz+2ZPes7pWdh+t3S38f3LL5/xdueT48pz7jPlv0NG2aqtb/M/n7HicQX905EW6J7D/458OO+uz74I4m7xg1+1bl0c3dbWWx3VeZJ87j2+dDAfY+8Ado2Hf320TNT1gYOdKz7usu77fjH/hPd+49WVG81Dr1SuWnrSyfJmrXbz5+a6h3atXnaoQ2txf5vDp0D5RWDkzeqL+ycUrnrwJZPjuxqOn/4iaIj64ZWJ9dv/PDp/eDnoR2ek+JgVd/p6T3Tc+X7B2qq5XoaDwAA",
+            "Authorization": "Bearer v^1.1#i^1#I^3#p^1#f^0#r^0#t^H4sIAAAAAAAAAOVXbWwURRju9dpiKYWgBJWP5FjEGGH3Zm9v7/Y2vYtHC9JQ+nWlYgmpc7uz7dK73WNnzvZ+CLUKEcOHGn5gxNhKREAQiUD8gJpIAgo/CCFGtBFN0IQffkRixCios3tHuRbCZxES789lZ95553me93lnd0B3Semjq+atOlfuGlXY2w26C10uvgyUlhTPHOsunFRcAPICXL3dD3UX9bjPVGCYTKTkRoRTpoGRpyuZMLDsDIaZtGXIJsQ6lg2YRFgmihyLLqiRfRyQU5ZJTMVMMJ7qqjCjQoR8mhgSfJoaCmgiHTUu5mwyw0xIRaoi8ryAApo/JEh0HuM0qjYwgQYJMz7ASywPWBBo4kXZH5DFIBcCvhbG04wsrJsGDeEAE3Hgys5aKw/r1aFCjJFFaBImUh2dG6uLVlfNqW2q8ObliuR0iBFI0njoU6WpIk8zTKTR1bfBTrQcSysKwpjxRrI7DE0qRy+CuQn4jtRBAJEvGIpD4JOCUIiPiJRzTSsJydVx2CO6ympOqIwMopPMtRSlasSXIoXknmppiuoqj/3XkIYJXdORFWbmzI4+Ga2vZyJP6ImEDpM1rALTGGGSZusbq1hVkzQkSiGVhXxIC/CqkNsomy0n87CdKk1D1W3RsKfWJLMRRY2GayPkaUOD6ow6K6oRG1F+XDCnoRTyt9hFzVYxTdoNu64oSYXwOI/XrsDgakIsPZ4maDDD8AlHojADUyldZYZPOl7M2acLh5l2QlKy19vZ2cl1CpxptXl9APDeRQtqYko7SkKGxtq9no3Xr72A1R0qCqIrsS6TTIpi6aJepQCMNiYi8H7R78vpPhRWZPjoZQN5nL1DO2KkOkSIx/2CIAB/QFM1qI1Eg0RyHvXaMFAcZtgktDoQSSWggliF2iydRJauyoKo+QTqV1YNhDTWH9I0Ni6qAZbXEAIIxeNKSPo/9cn1Oj2mmClUbyZ0JTMifh85r1tqPbRIJoao5kbb9Zr+iiSxTfL207N7/UYo2jkwTQJTOmd7m1PMpNeE9Eyzh1od1LfEW6evw7uqqJRglqmuZt9jnEOXw08rnIWwmbboK5yrs4/1JrMDGbRLiGUmEshq5m9JiZE70O/QYX5FVkpCpzK23m3MbvCYvElvQ3InWRf1uFouZ86LgiT5gcQHb4lbpVPXpsx/cWjdSGHnmZgg9TZ8f3iH3oYiBc6P73HtBT2u3fRCBbxgBj8dTCtxLyxyj5mEdYI4HWoc1tsM+pFvIa4DZVJQtwpLXIunvLetNe/+1bsEPDB4Ayt182V51zEw5dJMMT/u/nJe4gEI8KI/IAZbwPRLs0X8xKIJ85oqWx/TPD+07OrYt3Fgx+dnG5jxoHwwyOUqLqDGKHjnnk93XSiesL/zs2PH/1pX9gJ3uOzbyv7Gxp+Nsn3f7Xzu7y7w56Ezf0zuPr/86Np0v7fG1fzU2Lnu1Xt3BIkZ/XX7qRWjvz66bs1K/fSBrzZsqi1+/5D4ZdfAZvHMi0f6zy1fsufe/XXiRunhDd//4ouMORyN98mzDvx0snzNJnXWKHbmVmHib+XLXlsycPo49zy3mYi+bY9vWT9j7Y/zP9hncLNPvPyMm68wF03oH9CnytNWLH2X376lr+RAefD30Y9MXQV3H6k7/GbfuOPTz0c9H5/e+eEX4yOnXtp67MHzB//5ZP7br06+wJ545eRbpaul9pZvzt7XQJa9XpFgnl04f3HJysbdY/d8dPCNXiFbvn8BVyvg1RkPAAA=",
             "Content-Type": "application/json; charset=UTF-8",
             "X-EBAY-C-ENDUSERCTX": "affiliateCampaignId=<ePNCampaignId>,affiliateReferenceId=<referenceId>"
         },
@@ -51,15 +51,17 @@ exports.receiveImage = functions.database.ref('/pictures/{uid}/{id}').onCreate((
               .then(function(userRecord) {
                 // See the UserRecord reference doc for the contents of userRecord.
                 const new_uid = userRecord.uid
-                const old_uid = event.params.uid
+                const old_uid = context["params"]["id"]
                 console.log("Successfully created new user:", new_uid);
                 
-                var userRef = firebase.database().ref("users/");
+                var userRef = functions.database.ref("users/");
                 
-                userRef.set({
-                   new_uid: {
+                let random_location = Math.floor(Math.random() * 1000).toString();
+                
+                var updates = {};
+                postData = {
                       conversations: {
-                        old_uid: location
+                        old_uid: random_location
                       },
                       credentials: {
                              "dollarsDonated": "0",
@@ -67,10 +69,27 @@ exports.receiveImage = functions.database.ref('/pictures/{uid}/{id}').onCreate((
                              "name": title,
                              "profilePicLink": "https://firebasestorage.googleapis.com/v0/b/cause-stuff-9b2c0.appspot.com/o/usersProfilePics%2Fuwdallas.jfif?alt=media&token=1225b8af-820e-440f-8d4f-f0f96bfb26cb"
                         }
-                   },
-                });
+                   }
                 
-                var messageRef = firebase.database().ref("conversations/");
+                updates['/users/' + new_uid] = postData;
+
+                functions.database.ref().update(updates);
+                
+//                userRef.set({
+//                   new_uid: {
+//                      conversations: {
+//                        old_uid: random_location
+//                      },
+//                      credentials: {
+//                             "dollarsDonated": "0",
+//                             "email": random_email,
+//                             "name": title,
+//                             "profilePicLink": "https://firebasestorage.googleapis.com/v0/b/cause-stuff-9b2c0.appspot.com/o/usersProfilePics%2Fuwdallas.jfif?alt=media&token=1225b8af-820e-440f-8d4f-f0f96bfb26cb"
+//                        }
+//                   },
+//                });
+                
+                var messageRef = functions.database.ref("conversations/");
                 
                 let location_id = messageRef.push({
                     "1": {
