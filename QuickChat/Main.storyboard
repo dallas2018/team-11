@@ -581,7 +581,7 @@
                             <constraint firstItem="44O-uk-hGn" firstAttribute="leading" secondItem="qPh-Fp-RNk" secondAttribute="leading" id="hg1-Ei-CN1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Conversations" id="KJq-uY-IU6"/>
+                    <navigationItem key="navigationItem" title="Listings" id="KJq-uY-IU6"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="alertBottomConstraint" destination="1Rg-Ry-AA5" id="QJG-EI-WP4"/>
@@ -593,10 +593,10 @@
             </objects>
             <point key="canvasLocation" x="1606" y="429"/>
         </scene>
-        <!--Chat-->
+        <!--Post-->
         <scene sceneID="j8s-t8-l2W">
             <objects>
-                <viewController storyboardIdentifier="Chat" title="Chat" useStoryboardIdentifierAsRestorationIdentifier="YES" id="j4r-Rx-g1K" customClass="ChatVC" customModule="Rudy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Chat" title="Post" useStoryboardIdentifierAsRestorationIdentifier="YES" id="j4r-Rx-g1K" customClass="ChatVC" customModule="Rudy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RRG-Ne-wJW"/>
                         <viewControllerLayoutGuide type="bottom" id="noO-df-r8p"/>

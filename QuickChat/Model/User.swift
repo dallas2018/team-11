@@ -56,7 +56,7 @@ class User: NSObject {
                                 return
                             }
                             let stringPath = path.absoluteString
-                            let values = ["name": withName, "email": email, "profilePicLink": stringPath]
+                            let values = ["name": withName, "email": email, "profilePicLink": stringPath, "dollarsDonated": 0]
                         userRef.child("credentials").updateChildValues(values, withCompletionBlock: { (errr, _) in
                                 if errr == nil {
                                     let userInfo = ["email" : email, "password" : password]
