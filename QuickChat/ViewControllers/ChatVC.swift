@@ -315,9 +315,11 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
                     "EntityID: \(label.entityID ?? "")"
                     }.joined(separator: "\n")
                 self.showResults()
+                
                 // [END_EXCLUDE]
             }
             self.composeMessage(type: .photo, content: pickedImage)
+            self.storeImgResults()
         } else {
             let pickedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
             let visionImage = VisionImage(image: pickedImage)
@@ -346,8 +348,14 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             print(self.resultsText)
             print("hello")
             self.composeMessage(type: .photo, content: pickedImage)
+            self.storeImgResults()
         }
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func storeImgResults(){
+        let ref = Database.database().reference()
+        ref.child("pictures").child(self.currentUser!.id).setValue(self.resultsText)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
