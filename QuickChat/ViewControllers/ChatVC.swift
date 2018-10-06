@@ -340,8 +340,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
                 // START_EXCLUDE
                 self.resultsText = labels.map { label -> String in
                     "Label: \(String(describing: label.label ?? "")), " +
-                        "Confidence: \(label.confidence ?? 0), " +
-                    "EntityID: \(label.entityID ?? "")"
+                        "Confidence: \(label.confidence ?? 0)"
                     }.joined(separator: "\n")
                 self.storeImgResults()
                 self.showResults()
