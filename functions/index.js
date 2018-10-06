@@ -6,17 +6,19 @@ const admin = require('firebase-admin');
 
 admin.initializeApp(functions.config().firebase);
 
-exports.receiveImage = functions.database.ref('/pictures/{uid}/{id}').onCreate(event => {
+
+exports.receiveImage = functions.database.ref('/pictures/{uid}/{id}').onCreate((snap, context) => {
     
-    console.log(event);
-    const label = event.data
-    console.log(label)
+    console.log("snap", snap)
+    console.log("context", context)
+    const label = context["params"]["id"]
+    console.log("label", label)
     
     const url = "https://api.ebay.com/buy/browse/v1/item_summary/search?q=" + label + "&limit=1"
 
     const otherParams = {
         headers: {
-            "Authorization": "Bearer v^1.1#i^1#I^3#p^1#r^0#f^0#t^H4sIAAAAAAAAAOVXbWwURRju9UvKdxBbaQoeC2qA7N7s7d12b+EOzhbSE2grd5YvTZnbnS0Le7vHzpztBYKlKolIDBI/EyNNkIAoEUwISonRBEUSfugP4QcgCQkBgcQEAYMx4uzeUa6V8FmExPtz2Zl333me533emR3QWV4xeW3D2j+GeR4p7u4EncUeDz8EVJSXTRleUlxdVgQKAjzdnRM7S7tKzkzDMGWk5XkIpy0TI29HyjCx7A6GmYxtyhbEOpZNmEJYJoocj86dI/s5IKdti1iKZTDeWH2YUZJBMcSDgKbxSRWqiI6a13ImrDDj16AKkkgRQ0JtQIM8ncc4g2ImJtAkdB7wEssDFogJIMmCJAf9nCD6FzHeFmRj3TJpCAeYiAtXdt+1C7DeHCrEGNmEJmEiseiseFM0Vj+zMTHNV5ArktchTiDJ4L5PdZaKvC3QyKCbL4PdaDmeURSEMeOL5Fbom1SOXgNzF/BdqQUhoAXUUEAEAbG2VkgOiJSzLDsFyc1xOCO6ympuqIxMopPsrRSlaiSXIYXknxppili91/l7LgMNXdORHWZmPhNdGG1uZiLzdcPQYWoOq8AMRphk2OZ59ayqSRoKSiGVhXxIE3lVyC+Uy5aXud9KdZap6o5o2NtokWcQRY36a+Mv0IYGNZlNdlQjDqKCOB5c0zAYXOQUNVfFDFlqOnVFKSqE1328dQV63ybE1pMZgnoz9J9wJQozMJ3WVab/pOvFvH06cJhZSkha9vna29u5doGz7DafHwDet2DunLiyFKUgQ2OdXs/F67d+gdVdKgptYxovk2yaYumgXqUAzDYmIvCBYMCf170vrEj/0X8NFHD29e2IgeoQpCAgoKRUq0AAJCgORIdE8ib1OThQEmbZFLSXI5I2oIJYhfosk0K2rspCUPML1LCsKoY0NhDSNDYZVEWW1xACCCWTSkj6PzXK7Vo9rlhp1GwZupIdEMMPnNlttRnaJBtHVHOz7XZdf0OS2CF53+k5vX5HFJ0cmCaBaZ1zvM0pVspnQbqpOUOtLup74q3T8/ChKiolmGOqq7mDjHPpcvglhbMRtjI2PcO5JmdfT1jLkUm7hNiWYSC7hb8nJQZuR39Au/kNWSmGTmVsfdiY3eE2eZfehuQBsi7t8iy+AXM+KEgSH+SFe6trnVvXRPY/2LTuqLANFiZIvQ8fIL6+16FIkfvjuzy7QZdnF71RAR94kp8AxpeXPF9aMrQa6wRxOtQ4rLeZ9CvfRtxylE1D3S4u9yyu2flJa8EFrPtF8HjvFayihB9ScB8DNddnyvgRVcN4iQdABJIgBf2LwITrs6V8ZenoPQ1LTv1cvF4fxQ4NHR781YzQZxsmgmG9QR5PWRF1RtHRnqrXpwY8l6q3Dd/36Ci+cu0LU7dcNksmTZ99bMEq873vfdk3vr76Vt1FfV739HSs/q+iI4cGhWvOHr/wREX6F/341oNnak7s27Fs+/bWUz38yk0rNuzAVbM//fOHcSP3nfro/LO7u6WNV7aeW9Gz/8LC6aMHv3ny/NWz3lf3n7+w/sNNr2ysCyXGeC3voIY9V3f63kk2XT4499B4sXL2yers26fRa0ee+sJe8/emDQfWnRw5DZ37ae93jx1DVZsrVzU3LojtqlxdJ3b8+n5o9cQDY788/W7Cnuz9fNvHpzsarmweEbsUX/L04S1T1o0xXj46H/Zs+2bcbxen7p016cS31sqxl3/84Pc1LTPKgxdH9uTK9w8v7m9HGg8AAA==",
+            "Authorization": "Bearer v^1.1#i^1#I^3#f^0#p^1#r^0#t^H4sIAAAAAAAAAOVXbWwURRju9doSgtAoIqSpeiwQGmT3Zu5jb2/hTg+OjwulvXKlQIvWvd3Zdsvd7roza7kQQ20MJiZGIkQFv9DEBP4gkCAJQZoY4w9S9YeJaChFDZAKhD+YKDGis9ujXAvhswqJ9+cyM++88z7P+7zv7ICeqonztizf8vtkz4TyXT2gp9zjgZPAxKrKp6Z4y2sqy0CJgWdXz+yeil7v0EIs5XOmuAph09Ax8m3M53QsupMxxrZ00ZCwhkVdyiMsElnMJFbWiwEOiKZlEEM2cowvlYwxWRDkoRyIgEBIifBSgM7qV302GzEmEoZCNBsQQABFBQToMsY2SumYSDqJMQEABRYCFvDNEIphKIIIx0cCrYyvBVlYM3RqwgEm7kYrunutklBvHqmEMbIIdcLEU4mlmcZEKrmkoXmhv8RXvEhDhkjExqNHiw0F+VqknI1ufgx2rcWMLcsIY8YfHz5htFMxcTWYuwjfZTrEo1BYAGFKdSDEg+i4ULnUsPISuXkczoymsKprKiKdaKRwK0YpG9kuJJPiqIG6SCV9zl+TLeU0VUNWjFmyKLEukU4z8TVaLqdJ+XpWlmyMMLHZ9Kokq6iCisJCVGElGFV5qASLBw17K9I85qTFhq5oDmnY12CQRYhGjcZyEyrhhho16o1WQiVORKV2wasc8nyrk9ThLNqkU3fyivKUCJ87vHUGRnYTYmlZm6ARD2MXXIpijGSamsKMXXS1WJTPRhxjOgkxRb+/u7ub6w5yhtXhDwAA/WtX1mfkTpSXGMfWqXXXXrv1BlZzociI7sSaSAomjWUj1SoNQO9g4kEYCocCRd5HhxUfO3vdRAlm/+iKGK8KiSoChCEg8CGgCsFweDwqJF4Uqd+JA2WlApuXrA2ImDlJRqxMdWbnkaUpYjCsBoJUsKzCR1U2FFVVNhtWeBaqCAGEslk5KvyfCuV2pZ6RDROljZwmF8ZH8OMmdktJSxYpZBDlXO+4XdXfECR2QP778JxavxOIjg9MnUimxjna5mQj7zck2tScqXY36nvCrdH78IFKKgU4jFRThi8yzoXL4RdlzkLYsC16h3ONTl9vNjYgnVYJsYxcDlkt8J6YGMeOfn+6+Q1RyTmN0tj+oCG7wzZ5l9qWyP1EXdHrab0eOQwHBSFAO3HknrAtdvPaXPgvmtadJHa5gQlS/oUPEP/o11C8zP3BXs9B0OvZTx9UwA/mwFlgZpV3dYX3oRqsEcRpksphrUOnX/kW4jaggilpVnmVp6123572kvfXrmfBjJEX2EQvnFTyHAO111YqYfX0yVCAAPAQhiGItIJZ11Yr4GMVjy7c/+5X3MMfDh7a3Pben68dbTo2aP0NJo8YeTyVZVQYZZkfT53c4bMnpKMnVp1dFu87dvLK3pefyM79fsXZRLp398UDl061fXT5Ve50//SZ25/0Tlv0U10nuhyd8cznA8+3eM18dpMytO+3L9Z1/fH19L9W157ftndqW/8PdW9NWQCnJt6vXbPmufqhTQf5FzoH26rWLzF//u6zvtSZt0Nky4JUNT/46fwj2vzybb6kebhr6emaX9vsZPKVbwdm1dUcP9LXHHn6BH84yKyXdvdt3bz1wMqGaS/1P9J15Z2jj68daDy7dqD1wvZzHwiHzhwJRpu+vDTUP7upQ3/jeLUsHU5drPukevb6ue0r/B8PbNpxYecvy4zz6pzV34DOy+1XXgc7Z84vlL1pn5u3Zzh9/wCE4OYoGQ8AAA==",
             "Content-Type": "application/json; charset=UTF-8",
             "X-EBAY-C-ENDUSERCTX": "affiliateCampaignId=<ePNCampaignId>,affiliateReferenceId=<referenceId>"
         },
@@ -26,29 +28,67 @@ exports.receiveImage = functions.database.ref('/pictures/{uid}/{id}').onCreate(e
     fetch(url, otherParams)
         .then(data => {return data.json()})
         .then(res => {
+            console.log(res)
             let price = res["itemSummaries"][0]["price"]["value"];
             let title = res["itemSummaries"][0]["title"]
-            console.log(title)
-            console.log(price)
+            console.log("title", title)
+            console.log("price", price)
             
-            console.log(event.data.ref.parent)
+//            console.log(event.data.ref.parent)
+            admin.auth().createUser({
+              email: "user@example.com",
+              emailVerified: true,
+              phoneNumber: "+11234567890",
+              password: "secretPassword",
+              displayName: title,
+              photoURL: "https://firebasestorage.googleapis.com/v0/b/cause-stuff-9b2c0.appspot.com/o/usersProfilePics%2Fuwdallas.jfif?alt=media&token=1225b8af-820e-440f-8d4f-f0f96bfb26cb",
+              disabled: false
+            })
+              .then(function(userRecord) {
+                // See the UserRecord reference doc for the contents of userRecord.
+                const new_uid = userRecord.uid
+                const old_uid = event.params.uid
+                console.log("Successfully created new user:", new_uid);
+                
+                var userRef = firebase.database().ref("users/");
+                
+                let r = Math.random().toString(100);
+                let random_email = "user" + r +"@example.com"
+                console.log("random email", random_email)
+                
+                userRef.set({
+                   new_uid: {
+                      conversations: {
+                        old_uid: location
+                      },
+                      credentials: {
+                             "dollarsDonated": "0",
+                             "email": random_email,
+                             "name": title,
+                             "profilePicLink": "https://firebasestorage.googleapis.com/v0/b/cause-stuff-9b2c0.appspot.com/o/usersProfilePics%2Fuwdallas.jfif?alt=media&token=1225b8af-820e-440f-8d4f-f0f96bfb26cb"
+                        }
+                   },
+                });
+                
+                var messageRef = firebase.database().ref("conversations/");
+                
+                let location_id = messageRef.push({
+                    "1": {
+                        content: price,
+                        fromID: new_uid,
+                        isRead: false,
+                        timestamp: Math.floor(Date.now() / 1000),
+                        toID: uid,
+                        type: "text"
+                    }
+                })
+                
+                console.log("new message at location", location_id)
+                
+              })
+              .catch(function(error) {
+                console.log("Error creating new user:", error);
+              });
         })
         .catch(err => console.log(err))
-    
-//    admin.auth().createUser({
-//      email: "user@example.com",
-//      emailVerified: true,
-//      phoneNumber: "+11234567890",
-//      password: "secretPassword",
-//      displayName: message,
-//      photoURL: "https://firebasestorage.googleapis.com/v0/b/cause-stuff-9b2c0.appspot.com/o/usersProfilePics%2Fuwdallas.jfif?alt=media&token=1225b8af-820e-440f-8d4f-f0f96bfb26cb",
-//      disabled: false
-//    })
-//      .then(function(userRecord) {
-//        // See the UserRecord reference doc for the contents of userRecord.
-//        console.log("Successfully created new user:", userRecord.uid);
-//      })
-//      .catch(function(error) {
-//        console.log("Error creating new user:", error);
-//      });
 })
