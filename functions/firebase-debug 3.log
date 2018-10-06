@@ -1,0 +1,58 @@
+[debug] [2017-12-01T08:32:39.748Z] ----------------------------------------------------------------------
+[debug] [2017-12-01T08:32:39.751Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy --only functions
+[debug] [2017-12-01T08:32:39.752Z] CLI Version:   3.15.4
+[debug] [2017-12-01T08:32:39.752Z] Platform:      darwin
+[debug] [2017-12-01T08:32:39.752Z] Node Version:  v6.11.4
+[debug] [2017-12-01T08:32:39.752Z] Time:          Fri Dec 01 2017 02:32:39 GMT-0600 (CST)
+[debug] [2017-12-01T08:32:39.752Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-12-01T08:32:39.771Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-12-01T08:32:39.771Z] > authorizing via signed-in user
+[debug] [2017-12-01T08:32:39.774Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/rudy-881bb  
+ Fri Dec 01 2017 02:32:39 GMT-0600 (CST)
+[debug] [2017-12-01T08:32:40.188Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-01T08:32:40.191Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/rudy-881bb/tokens  
+ Fri Dec 01 2017 02:32:40 GMT-0600 (CST)
+[debug] [2017-12-01T08:32:40.604Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'rudy-881bb'...
+[info] 
+[info] i  deploying functions
+[debug] [2017-12-01T08:32:41.057Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase experimental:functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "~5.4.2",
+    "firebase-functions": "^0.7.1",
+    "open": "0.0.5",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1",
+    "swagger-client": "^2.1.18",
+    "xhr2": "^0.1.4"
+  },
+  "private": true,
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2017-12-01T08:32:41.059Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/rudy-881bb?view=CONSUMER_VIEW  
+ Fri Dec 01 2017 02:32:41 GMT-0600 (CST)
+[debug] [2017-12-01T08:32:41.059Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/rudy-881bb?view=CONSUMER_VIEW  
+ Fri Dec 01 2017 02:32:41 GMT-0600 (CST)
+[debug] [2017-12-01T08:32:41.385Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-01T08:32:41.447Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2017-12-01T08:32:41.448Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/rudy-881bb  
+ Fri Dec 01 2017 02:32:41 GMT-0600 (CST)
+[debug] [2017-12-01T08:32:41.449Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/rudy-881bb/apiKeys  
+ Fri Dec 01 2017 02:32:41 GMT-0600 (CST)
+[debug] [2017-12-01T08:32:41.683Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-01T08:32:42.046Z] <<< HTTP RESPONSE 200
