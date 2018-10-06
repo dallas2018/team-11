@@ -10,5 +10,8 @@ target 'Rudy' do
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod 'Firebase/Storage'
-
+pod 'Firebase/Core'
+pod 'Firebase/MLVision'
+# If using the on-device API:
+pod 'Firebase/MLVisionLabelModel'
 end
