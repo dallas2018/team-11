@@ -29,7 +29,7 @@ import CoreLocation
 class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,  UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate {
     var resultsText = ""
     var label = ""
-    var confidence
+    var confidence = 0.0
     lazy var vision = Vision.vision()
     //MARK: Properties
     @IBOutlet var inputBar: UIView!
