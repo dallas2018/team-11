@@ -27,12 +27,15 @@ import Firebase
 import CoreLocation
 
 class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,  UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate {
-    
+    var resultsText = ""
+    lazy var vision = Vision.vision()
     //MARK: Properties
     @IBOutlet var inputBar: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var detectButton: UIBarButtonItem!
+
     override var inputAccessoryView: UIView? {
         get {
             self.inputBar.frame.size.height = self.barHeight
@@ -273,12 +276,75 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         textField.resignFirstResponder()
         return true
     }
-    
+    private func showResults() {
+        let resultsAlertController = UIAlertController(
+            title: "Detection Results",
+            message: nil,
+            preferredStyle: .actionSheet
+        )
+        resultsAlertController.addAction(
+            UIAlertAction(title: "OK", style: .destructive) { _ in
+                resultsAlertController.dismiss(animated: true, completion: nil)
+            }
+        )
+        resultsAlertController.message = resultsText
+        resultsAlertController.popoverPresentationController?.barButtonItem = detectButton
+        resultsAlertController.popoverPresentationController?.sourceView = self.view
+        present(resultsAlertController, animated: true, completion: nil)
+        print(resultsText)
+    }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            let visionImage = VisionImage(image: pickedImage)
+            let labelDetector = vision.labelDetector()
+            labelDetector.detect(in: visionImage) { labels, error in
+                guard error == nil, let labels = labels, !labels.isEmpty else {
+                    // [START_EXCLUDE]
+                    let errorString = error?.localizedDescription ?? "No results returned"
+                    self.resultsText = "Cloud label detection failed with error: \(errorString)"
+                    self.showResults()
+                    // [END_EXCLUDE]
+                    return
+                }
+                
+                // Labeled image
+                // START_EXCLUDE
+                self.resultsText = labels.map { label -> String in
+                    "Label: \(String(describing: label.label ?? "")), " +
+                        "Confidence: \(label.confidence ?? 0), " +
+                    "EntityID: \(label.entityID ?? "")"
+                    }.joined(separator: "\n")
+                self.showResults()
+                // [END_EXCLUDE]
+            }
             self.composeMessage(type: .photo, content: pickedImage)
         } else {
             let pickedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            let visionImage = VisionImage(image: pickedImage)
+            let labelDetector = vision.labelDetector()
+            labelDetector.detect(in: visionImage) { labels, error in
+                guard error == nil, let labels = labels, !labels.isEmpty else {
+                    // [START_EXCLUDE]
+                    let errorString = error?.localizedDescription ?? "No results returned"
+                    self.resultsText = "Cloud label detection failed with error: \(errorString)"
+                    self.showResults()
+                    // [END_EXCLUDE]
+                    return
+                }
+                
+                // Labeled image
+                // START_EXCLUDE
+                self.resultsText = labels.map { label -> String in
+                    "Label: \(String(describing: label.label ?? "")), " +
+                        "Confidence: \(label.confidence ?? 0), " +
+                    "EntityID: \(label.entityID ?? "")"
+                    }.joined(separator: "\n")
+                
+                self.showResults()
+                // [END_EXCLUDE]
+            }
+            print(self.resultsText)
+            print("hello")
             self.composeMessage(type: .photo, content: pickedImage)
         }
         picker.dismiss(animated: true, completion: nil)

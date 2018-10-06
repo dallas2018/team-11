@@ -1,159 +1,99 @@
+/**
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for t`he specific language governing permissions and
+ * limitations under the License.
+ */
+'use strict';
+
 const functions = require('firebase-functions');
-
-var Swagger = require('swagger-client');
-var open = require('open');
-var rp = require('request-promise');
-
-// config items
-var pollInterval = 1000;
-var directLineSecret = 'XQDzMRPGIs8.cwA.ifw.NmE1zazCH0_4uKkygAxL_TkbRSpCeA1wHogj6mNtKpQ';
-var directLineClientName = 'Will';
-var directLineSpecUrl = 'https://docs.botframework.com/en-us/restapi/directline3/swagger.json';
-var curConversationId = '';
-var curBotResponse = '...';
-
-var directLineClient = rp(directLineSpecUrl)
-    .then(function (spec) {
-        // client
-        return new Swagger({
-            spec: JSON.parse(spec.trim()),
-            usePromise: true
-        });
-    })
-    .then(function (client) {
-        // add authorization header to client
-        client.clientAuthorizations.add('AuthorizationBotConnector', new Swagger.ApiKeyAuthorization('Authorization', 'Bearer ' + directLineSecret, 'header'));
-        return client;
-    })
-    .catch(function (err) {
-        console.error('Error initializing DirectLine client', err);
-    });
-
-// once the client is ready, create a new conversation 
-directLineClient.then(function (client) {
-    client.Conversations.Conversations_StartConversation()                          // create conversation
-        .then(function (response) {
-        	console.log("Created new conversation ", response.obj.conversationId);
-            return response.obj.conversationId;
-        })                            // obtain id
-        .then(function (conversationId) {
-        	curConversationId = conversationId;
-        });
-});
-
-// Read from console (stdin) and send input to conversation using DirectLine client
-function sendMessageFromConsole(client, conversationId, message) {
-	console.log("Sending message to conversation " + conversationId);
-    // send message
-    client.Conversations.Conversations_PostActivity(
-        {
-            conversationId: conversationId,
-            activity: {
-                textFormat: 'plain',
-                text: message,
-                type: 'message',
-                from: {
-                    id: directLineClientName,
-                    name: directLineClientName
-                }
-            }
-        }).catch(function (err) {
-            console.error('Error sending message:', err);
-        });
-}
-
-// Poll Messages from conversation using DirectLine client
-function pollMessages(client, conversationId) {
-    console.log('Starting polling message for conversationId: ' + conversationId);
-    var watermark = null;
-    setInterval(function () {
-        client.Conversations.Conversations_GetActivities({ conversationId: conversationId, watermark: watermark })
-            .then(function (response) {
-                watermark = response.obj.watermark;                                 // use watermark so subsequent requests skip old messages 
-                return response.obj.activities;
-            })
-            .then(printMessages);
-    }, pollInterval);
-}
-
-// Helpers methods
-function printMessages(activities) {
-    if (activities && activities.length) {
-        // ignore own messages
-        activities = activities.filter(function (m) { return m.from.id !== directLineClientName });
-		activities.forEach(printMessage);
-    }
-}
-
-function printMessage(activity) {
-    if (activity.text) {
-        console.log("current response is ", activity.text);
-        curBotResponse = activity.text;
-    }
-}
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
+const fs = require('fs');
+const crypto = require('crypto');
+const path = require('path');
+const os = require('os');
 
 const admin = require('firebase-admin');
-admin.initializeApp(functions.config().firebase);
+admin.initializeApp();
+const gcs = require('@google-cloud/storage')();
+const spawn = require('child-process-promise').spawn;
 
-exports.receivedQuery = functions.database.ref('/conversations/-L-EhR3Ps0OXpU6hvhYP/{id}').onCreate(event => {
+/**
+ * When an image is uploaded in the Storage bucket the information and metadata of the image (the
+ * output of ImageMagick's `identify -verbose`) is saved in the Realtime Database.
+ */
+exports.metadata = functions.storage.object().onFinalize(async (object) => {
+  const filePath = object.name;
 
-	const messageId = event.params.id;
-	const message = event.data.val().content;
-	const time = Math.floor(Date.now() / 1000);
+  // Create random filename with same extension as uploaded file.
+  const randomFileName = crypto.randomBytes(20).toString('hex') + path.extname(filePath);
+  const tempLocalFile = path.join(os.tmpdir(), randomFileName);
 
-	console.log("Message ID is ", messageId);
-	console.log("Message is ", message);
+  // Exit if this is triggered on a file that is not an image.
+  if (!object.contentType.startsWith('image/')) {
+    console.log('This is not an image.');
+    return null;
+  }
 
-	if(messageId.indexOf("Bot Response") != -1) {
-		return console.log("Bot already responded");
-	}
-
-	// once the client is ready, create a new conversation 
-	directLineClient.then(function (client) {
-    	sendMessageFromConsole(client, curConversationId, curBotResponse);
-    });
-
-    const response = {
-		content : curBotResponse,
-		fromID : "1vj712KhmheBF6sPdXY9wdOfKyj1",
-		toID : "sNVP4BfozOZhmeXk9KVIhkpuGq52",
-		isRead : false,
-		type : "text",
-		timestamp : time
-	};
-
-	return event.data.ref.parent.child('Bot Response - '.concat(time.toString())).set(response);
+  let metadata;
+  // Download file from bucket.
+  const bucket = gcs.bucket(object.bucket);
+  await bucket.file(filePath).download({destination: tempLocalFile});
+  // Get Metadata from image.
+  const result = await spawn('identify', ['-verbose', tempLocalFile], {capture: ['stdout', 'stderr']});
+  // Save metadata to realtime datastore.
+  metadata = imageMagickOutputToObject(result.stdout);
+  const safeKey = makeKeyFirebaseCompatible(filePath);
+  await admin.database().ref(safeKey).set(metadata);
+  console.log('Wrote to:', filePath, 'data:', metadata);
+  // Cleanup temp directory after metadata is extracted
+  // Remove the file from temp directory
+  await fs.unlinkSync(tempLocalFile)
+  return console.log('cleanup successful!');
 });
 
-exports.receivedQuery2 = functions.database.ref('/conversations/-L-KIgfpDygBldHEKtZa/{id}').onCreate(event => {
+/**
+ * Convert the output of ImageMagick's `identify -verbose` command to a JavaScript Object.
+ */
+function imageMagickOutputToObject(output) {
+  let previousLineIndent = 0;
+  const lines = output.match(/[^\r\n]+/g);
+  lines.shift(); // Remove First line
+  lines.forEach((line, index) => {
+    const currentIdent = line.search(/\S/);
+    line = line.trim();
+    if (line.endsWith(':')) {
+      lines[index] = makeKeyFirebaseCompatible(`"${line.replace(':', '":{')}`);
+    } else {
+      const split = line.replace('"', '\\"').split(': ');
+      split[0] = makeKeyFirebaseCompatible(split[0]);
+      lines[index] = `"${split.join('":"')}",`;
+    }
+    if (currentIdent < previousLineIndent) {
+      lines[index - 1] = lines[index - 1].substring(0, lines[index - 1].length - 1);
+      lines[index] = new Array(1 + (previousLineIndent - currentIdent) / 2).join('}') + ',' + lines[index];
+    }
+    previousLineIndent = currentIdent;
+  });
+  output = lines.join('');
+  output = '{' + output.substring(0, output.length - 1) + '}'; // remove trailing comma.
+  output = JSON.parse(output);
+  console.log('Metadata extracted from image', output);
+  return output;
+}
 
-	const messageId = event.params.id;
-	const message = event.data.val().content;
-	const time = Math.floor(Date.now() / 1000);
-
-	console.log("Message ID is ", messageId);
-	console.log("Message is ", message);
-
-	if(messageId.indexOf("Bot Response") != -1) {
-		return console.log("Bot already responded");
-	}
-
-	// once the client is ready, create a new conversation 
-	directLineClient.then(function (client) {
-    	sendMessageFromConsole(client, curConversationId, curBotResponse);
-    });
-
-    const response = {
-		content : curBotResponse,
-		fromID : "1vj712KhmheBF6sPdXY9wdOfKyj1",
-		toID : "ySqfyMvNzoXw39b4bXcjy5xcqlj2",
-		isRead : false,
-		type : "text",
-		timestamp : time
-	};
-
-	return event.data.ref.parent.child('Bot Response - '.concat(time.toString())).set(response);
-});
+/**
+ * Makes sure the given string does not contain characters that can't be used as Firebase
+ * Realtime Database keys such as '.' and replaces them by '*'.
+ */
+function makeKeyFirebaseCompatible(key) {
+  return key.replace(/\./g, '*');
+}
