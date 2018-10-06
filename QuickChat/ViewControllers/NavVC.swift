@@ -30,7 +30,11 @@ class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewD
     
     let charities = ["MANY MANSIONS A CALIFORNIA NON PROFIT CORPORATION", "Minnesota Concil of Nonprofits, Inc.", "Institte for Nonprofit News", "MARYLAND ASSOCIATION OF NON-PROFIT ORGANIZATIONS INC", "NONPROFITS FIRST INC", "Oklahoma Center for Nonprofits, Inc.", "Nonprofit Coordinating Committee of New York, Inc.", "High Fives Non-Profit Fondation", "A Noise Within", "CENTER FOR NONPROFIT EXCELLENCE", "THE NONPROFIT CONCIL", "GLOBAL PAINT FOR CHARITY INC", "DELAWARE ALLIANCE FOR NONPROFIT ADVANCEMENT INC", "OHIO ASSOCIATION OF NONPROFIT ORGANIZATIONS", "French Blldog Resce Network a Nonprofit Corporation", "INSTITTE OF ARTS MSIC & SCIENCE A CALIFORNIA NON PROFIT PBLIC BEN", "GlobalGiving", "GideStar SA", "MONTEREY BAY AQARIM FONDATION", "WABASH VALLEY COMMNITY FONDATION INC", "WHITEFISH COMMNITY FONDATION INC", "Pre, Inc. dba Pre Charity", "Madison Commnity Fondation", "Direct Relief", "Commnity Fondation Santa Crz Conty"]
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
+<<<<<<< HEAD
          return 1
+=======
+        return 1
+>>>>>>> new_master
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return charities.count
@@ -40,7 +44,10 @@ class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewD
         return charities[row]
     }
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> new_master
     //MARK: Properties
     @IBOutlet var contactsView: UIView!
     @IBOutlet var profileView: UIView!

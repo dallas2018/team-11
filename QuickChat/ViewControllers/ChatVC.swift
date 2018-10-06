@@ -356,7 +356,21 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
     
     func storeImgResults(){
         let ref = Database.database().reference()
+<<<<<<< HEAD
         let values = [resultsText.components(separatedBy: ",")[0] : "label" ]
+=======
+        var values = [resultsText.components(separatedBy: ",")[0] : "label" ]
+        var lines: [String] = []
+        resultsText.enumerateLines{ line, _ in
+            lines.append(line)
+        }
+        for line in lines{
+            values[line.components(separatedBy: ",")[0]] = "label"
+        }
+//        for i in stride(from: 2, to: values.count, by: 2){
+//            values[resultsText.components(separatedBy: ",")[i]] = "label"
+//        }
+>>>>>>> new_master
         ref.child("pictures").child(self.currentUser!.id).updateChildValues(values)
     }
     
