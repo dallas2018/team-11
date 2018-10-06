@@ -32,6 +32,7 @@ class User: NSObject {
     let email: String
     let id: String
     var profilePic: UIImage
+    var charities: [String]
     
     //MARK: Methods
     class func registerUser(withName: String, email: String, password: String, profilePic: UIImage, completion: @escaping (Bool) -> Swift.Void) {
@@ -104,7 +105,8 @@ class User: NSObject {
                 URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
                     if error == nil {
                         let profilePic = UIImage.init(data: data!)
-                        let user = User.init(name: name, email: email, id: forUserID, profilePic: profilePic!)
+                        let charities = ["MANY MANSIONS A CALIFORNIA NON PROFIT CORPORATION", "Minnesota Concil of Nonprofits, Inc.", "Institte for Nonprofit News", "MARYLAND ASSOCIATION OF NON-PROFIT ORGANIZATIONS INC", "NONPROFITS FIRST INC", "Oklahoma Center for Nonprofits, Inc.", "Nonprofit Coordinating Committee of New York, Inc.", "High Fives Non-Profit Fondation", "A Noise Within", "CENTER FOR NONPROFIT EXCELLENCE", "THE NONPROFIT CONCIL", "GLOBAL PAINT FOR CHARITY INC", "DELAWARE ALLIANCE FOR NONPROFIT ADVANCEMENT INC", "OHIO ASSOCIATION OF NONPROFIT ORGANIZATIONS", "French Blldog Resce Network a Nonprofit Corporation", "INSTITTE OF ARTS MSIC & SCIENCE A CALIFORNIA NON PROFIT PBLIC BEN", "GlobalGiving", "GideStar SA", "MONTEREY BAY AQARIM FONDATION", "WABASH VALLEY COMMNITY FONDATION INC", "WHITEFISH COMMNITY FONDATION INC", "Pre, Inc. dba Pre Charity", "Madison Commnity Fondation", "Direct Relief", "Commnity Fondation Santa Crz Conty"]
+                        let user = User.init(name: name, email: email, id: forUserID, profilePic: profilePic!, charities: charities)
                         completion(user)
                     }
                 }).resume()
@@ -124,7 +126,8 @@ class User: NSObject {
                 URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
                     if error == nil {
                         let profilePic = UIImage.init(data: data!)
-                        let user = User.init(name: name, email: email, id: id, profilePic: profilePic!)
+                        let charities = ["MANY MANSIONS A CALIFORNIA NON PROFIT CORPORATION", "Minnesota Concil of Nonprofits, Inc.", "Institte for Nonprofit News", "MARYLAND ASSOCIATION OF NON-PROFIT ORGANIZATIONS INC", "NONPROFITS FIRST INC", "Oklahoma Center for Nonprofits, Inc.", "Nonprofit Coordinating Committee of New York, Inc.", "High Fives Non-Profit Fondation", "A Noise Within", "CENTER FOR NONPROFIT EXCELLENCE", "THE NONPROFIT CONCIL", "GLOBAL PAINT FOR CHARITY INC", "DELAWARE ALLIANCE FOR NONPROFIT ADVANCEMENT INC", "OHIO ASSOCIATION OF NONPROFIT ORGANIZATIONS", "French Blldog Resce Network a Nonprofit Corporation", "INSTITTE OF ARTS MSIC & SCIENCE A CALIFORNIA NON PROFIT PBLIC BEN", "GlobalGiving", "GideStar SA", "MONTEREY BAY AQARIM FONDATION", "WABASH VALLEY COMMNITY FONDATION INC", "WHITEFISH COMMNITY FONDATION INC", "Pre, Inc. dba Pre Charity", "Madison Commnity Fondation", "Direct Relief", "Commnity Fondation Santa Crz Conty"]
+                        let user = User.init(name: name, email: email, id: id, profilePic: profilePic!, charities: charities)
                         completion(user)
                     }
                 }).resume()
@@ -141,11 +144,12 @@ class User: NSObject {
 
     
     //MARK: Inits
-    init(name: String, email: String, id: String, profilePic: UIImage) {
+    init(name: String, email: String, id: String, profilePic: UIImage, charities: [String]) {
         self.name = name
         self.email = email
         self.id = id
         self.profilePic = profilePic
+        self.charities = charities
     }
 }
 
