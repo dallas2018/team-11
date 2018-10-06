@@ -155,7 +155,7 @@ class Message {
                 let child = UUID().uuidString
                 Storage.storage().reference().child("messagePics").child(child).putData(imageData!, metadata: nil, completion: { (metadata, error) in
                     if error == nil {
-                        
+ 
                         let storageRef = Storage.storage().reference().child("messagePics").child(child)
                         
                         storageRef.downloadURL { (url, error) in
