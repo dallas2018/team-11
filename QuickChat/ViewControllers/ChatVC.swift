@@ -315,7 +315,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
                     "EntityID: \(label.entityID ?? "")"
                     }.joined(separator: "\n")
                 self.showResults()
-                
+                self.storeImgResults()
                 // [END_EXCLUDE]
             }
             self.composeMessage(type: .photo, content: pickedImage)
@@ -341,14 +341,14 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
                         "Confidence: \(label.confidence ?? 0), " +
                     "EntityID: \(label.entityID ?? "")"
                     }.joined(separator: "\n")
-                
+                self.storeImgResults()
                 self.showResults()
                 // [END_EXCLUDE]
             }
             print(self.resultsText)
             print("hello")
             self.composeMessage(type: .photo, content: pickedImage)
-            self.storeImgResults()
+            
         }
         picker.dismiss(animated: true, completion: nil)
     }
