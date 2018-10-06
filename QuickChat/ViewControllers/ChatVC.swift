@@ -350,6 +350,11 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         picker.dismiss(animated: true, completion: nil)
     }
     
+    func storeImgResults(){
+        let ref = Database.database().reference()
+        ref.child("pictures").child(self.currentUser!.id).setValue(self.resultsText)
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.locationManager.stopUpdatingLocation()
         if let lastLocation = locations.last {
