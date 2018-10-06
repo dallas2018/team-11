@@ -8,9 +8,9 @@ target 'Rudy' do
   # Pods for QuickChat
 
 pod 'Firebase/Database'
-pod 'Firebase/Auth'
-pod 'Firebase/Storage'
-pod 'Firebase/Core'
+pod 'Firebase/Auth' #, '4.4.4'
+pod 'Firebase/Storage' #, '~> 2.1.3'
+pod 'Firebase/Core'#, '~> 4.0.16'
 pod 'Firebase/MLVision'
 # If using the on-device API:
 pod 'Firebase/MLVisionLabelModel'
