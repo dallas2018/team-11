@@ -1,5 +1,5 @@
-# team-11
+# Cause Stuff - Challenge 1
 
-Hey y'all! - Will Long
+We built a native iOS app that utilizes Machine Vision to allow users to take pictures of their unused goods, have them automatically bulk listed on the mobile marketplace, and to have the proceeds split with the charity of their choice!
 
-Ny - Annie
+Team: Will Long, Alex Yang, Frederick Husson, Ilana Gross, Israel Meza, Annie Nguyen
