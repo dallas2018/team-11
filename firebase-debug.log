@@ -1,0 +1,97 @@
+[debug] [2018-10-06T07:23:00.804Z] ----------------------------------------------------------------------
+[debug] [2018-10-06T07:23:00.806Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-10-06T07:23:00.806Z] CLI Version:   5.0.1
+[debug] [2018-10-06T07:23:00.806Z] Platform:      darwin
+[debug] [2018-10-06T07:23:00.806Z] Node Version:  v10.10.0
+[debug] [2018-10-06T07:23:00.807Z] Time:          Sat Oct 06 2018 02:23:00 GMT-0500 (Central Daylight Time)
+[debug] [2018-10-06T07:23:00.807Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-06T07:23:00.824Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-06T07:23:00.824Z] > authorizing via signed-in user
+[debug] [2018-10-06T07:23:00.825Z] [iam] checking project cause-stuff-9b2c0 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2018-10-06T07:23:00.827Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/cause-stuff-9b2c0:testIamPermissions  
+
+[debug] [2018-10-06T07:23:01.114Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'cause-stuff-9b2c0'...
+[info] 
+[info] i  deploying firestore, functions
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[debug] [2018-10-06T07:24:24.102Z] ----------------------------------------------------------------------
+[debug] [2018-10-06T07:24:24.106Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-10-06T07:24:24.107Z] CLI Version:   5.0.1
+[debug] [2018-10-06T07:24:24.107Z] Platform:      darwin
+[debug] [2018-10-06T07:24:24.107Z] Node Version:  v10.10.0
+[debug] [2018-10-06T07:24:24.108Z] Time:          Sat Oct 06 2018 02:24:24 GMT-0500 (Central Daylight Time)
+[debug] [2018-10-06T07:24:24.108Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-06T07:24:24.131Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-06T07:24:24.131Z] > authorizing via signed-in user
+[debug] [2018-10-06T07:24:24.132Z] [iam] checking project cause-stuff-9b2c0 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2018-10-06T07:24:24.136Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-10-06T07:24:24.136Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-10-06T07:24:24.431Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-06T07:24:24.475Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/cause-stuff-9b2c0:testIamPermissions  
+
+[debug] [2018-10-06T07:24:24.778Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'cause-stuff-9b2c0'...
+[info] 
+[info] i  deploying firestore, functions
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[debug] [2018-10-06T07:29:08.699Z] ----------------------------------------------------------------------
+[debug] [2018-10-06T07:29:08.701Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init
+[debug] [2018-10-06T07:29:08.702Z] CLI Version:   5.0.1
+[debug] [2018-10-06T07:29:08.702Z] Platform:      darwin
+[debug] [2018-10-06T07:29:08.702Z] Node Version:  v10.10.0
+[debug] [2018-10-06T07:29:08.714Z] Time:          Sat Oct 06 2018 02:29:08 GMT-0500 (Central Daylight Time)
+[debug] [2018-10-06T07:29:08.714Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-06T07:29:08.731Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-06T07:29:08.732Z] > authorizing via signed-in user
+[info] 
+     🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥     🔥🔥🔥     🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥
+     🔥🔥        🔥🔥  🔥🔥     🔥🔥 🔥🔥       🔥🔥     🔥🔥  🔥🔥   🔥🔥  🔥🔥       🔥🔥
+     🔥🔥🔥🔥🔥🔥    🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥   🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥
+     🔥🔥        🔥🔥  🔥🔥    🔥🔥  🔥🔥       🔥🔥     🔥🔥 🔥🔥     🔥🔥       🔥🔥 🔥🔥
+     🔥🔥       🔥🔥🔥🔥 🔥🔥     🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥     🔥🔥  🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/wlong/Desktop/team-11
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2018-10-06T07:29:10.869Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects  
+ 
+[debug] [2018-10-06T07:29:11.420Z] <<< HTTP RESPONSE 200
+[info] i  .firebaserc already has a default project, skipping
+[info] 
+=== Functions Setup
+[info] 
+[info] A functions directory will be created in your project with a Node.js
+[info] package pre-configured. Functions can be deployed with firebase deploy.
+[info] 
+[debug] [2018-10-06T07:29:11.423Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-06T07:29:11.423Z] > authorizing via signed-in user
+[debug] [2018-10-06T07:29:11.424Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/cause-stuff-9b2c0  
+ 
+[debug] [2018-10-06T07:29:11.644Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-06T07:29:11.648Z] >>> HTTP REQUEST PATCH https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/cause-stuff-9b2c0?updateMask=usageSettings  
+
+[debug] [2018-10-06T07:29:11.649Z] >>> HTTP REQUEST PATCH https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/cause-stuff-9b2c0?updateMask=usageSettings  
+
+[debug] [2018-10-06T07:29:12.548Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-06T07:29:12.578Z] <<< HTTP RESPONSE 200
+[info] ✔  Wrote functions/package.json
+[info] ✔  Wrote functions/index.js

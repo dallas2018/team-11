@@ -1,0 +1,14 @@
+[debug] [2018-10-06T07:22:52.678Z] ----------------------------------------------------------------------
+[debug] [2018-10-06T07:22:52.682Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-10-06T07:22:52.682Z] CLI Version:   5.0.1
+[debug] [2018-10-06T07:22:52.682Z] Platform:      darwin
+[debug] [2018-10-06T07:22:52.682Z] Node Version:  v10.10.0
+[debug] [2018-10-06T07:22:52.687Z] Time:          Sat Oct 06 2018 02:22:52 GMT-0500 (Central Daylight Time)
+[debug] [2018-10-06T07:22:52.688Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-06T07:22:52.705Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-06T07:22:52.705Z] > authorizing via signed-in user
+[debug] [2018-10-06T07:22:52.705Z] [iam] checking project cause-stuff-9b2c0 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2018-10-06T07:22:52.708Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/cause-stuff-9b2c0:testIamPermissions  
+
+[debug] [2018-10-06T07:22:53.092Z] <<< HTTP RESPONSE 200
