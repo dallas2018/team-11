@@ -339,8 +339,8 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
                 // Labeled image
                 // START_EXCLUDE
                 self.resultsText = labels.map { label -> String in
-                    "Label: \(String(describing: label.label ?? "")), " +
-                        "Confidence: \(label.confidence ?? 0)"
+                    "\(String(describing: label.label ?? "")), " +
+                        "\(label.confidence ?? 0)"
                     }.joined(separator: "\n")
                 self.storeImgResults()
                 self.showResults()
@@ -356,7 +356,8 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
     
     func storeImgResults(){
         let ref = Database.database().reference()
-        ref.child("pictures").child(self.currentUser!.id).setValue(self.resultsText)
+        let values = ["label" : resultsText.components(separatedBy: ",")[0], "confidence" : resultsText.components(separatedBy: ",")[1]]
+        ref.child("pictures").updateChildValues(values)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
