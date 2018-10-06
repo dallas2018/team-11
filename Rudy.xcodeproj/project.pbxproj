@@ -22,12 +22,13 @@
 		22B974C01DE9B5DF00E09490 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B974BF1DE9B5DF00E09490 /* Conversation.swift */; };
 		22EA578F1E1D28DD0008FFB2 /* newMessage.wav in Resources */ = {isa = PBXBuildFile; fileRef = 22EA578E1E1D28DD0008FFB2 /* newMessage.wav */; };
 		22EA57911E1D32520008FFB2 /* VCCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA57901E1D32520008FFB2 /* VCCells.swift */; };
-		67439F8E00F782106B04C0F2 /* Pods_Rudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B835296E759A7579F40C0F51 /* Pods_Rudy.framework */; };
 		A9FC068E20512FF50076BB2A /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9FC068F20512FF50076BB2A /* GTMSessionFetcher.framework */; };
 		A9FC069120518BA80076BB2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9FC069020518BA80076BB2A /* GoogleService-Info.plist */; };
+		E1D330ED37A4CB2AE59E4303 /* Pods_Rudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28E6ABFC346E5F13494C8F75 /* Pods_Rudy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		026AB75135EEBD12E2BD758D /* Pods-Rudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rudy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rudy/Pods-Rudy.debug.xcconfig"; sourceTree = "<group>"; };
 		220698831E066E4900F2284B /* Helper Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Helper Files.swift"; path = "Helper files/Helper Files.swift"; sourceTree = "<group>"; };
 		2217853C1DCD1DAC00A69F88 /* ConversationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversationsVC.swift; path = QuickChat/ViewControllers/ConversationsVC.swift; sourceTree = "<group>"; };
 		224834B01DB539A50019153C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = QuickChat/Model/User.swift; sourceTree = "<group>"; };
@@ -45,14 +46,10 @@
 		22B974BF1DE9B5DF00E09490 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Conversation.swift; path = QuickChat/Model/Conversation.swift; sourceTree = "<group>"; };
 		22EA578E1E1D28DD0008FFB2 /* newMessage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = newMessage.wav; sourceTree = "<group>"; };
 		22EA57901E1D32520008FFB2 /* VCCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VCCells.swift; path = QuickChat/ViewControllers/VCCells.swift; sourceTree = "<group>"; };
-		614F8B4888358059B3DC166B /* Pods-QuickChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuickChat/Pods-QuickChat.debug.xcconfig"; sourceTree = "<group>"; };
-		781934A655AA64CC1F45745E /* Pods-Rudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rudy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rudy/Pods-Rudy.debug.xcconfig"; sourceTree = "<group>"; };
+		28E6ABFC346E5F13494C8F75 /* Pods_Rudy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rudy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A454FECA792BDFCE0078622F /* Pods-Rudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rudy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rudy/Pods-Rudy.release.xcconfig"; sourceTree = "<group>"; };
 		A9FC068F20512FF50076BB2A /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FC069020518BA80076BB2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
-		B8041C4B4A9DA4F0F53D2BDE /* Pods_QuickChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B835296E759A7579F40C0F51 /* Pods_Rudy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rudy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8FBFCFF82B6EB57B02FA375 /* Pods-QuickChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-QuickChat/Pods-QuickChat.release.xcconfig"; sourceTree = "<group>"; };
-		D781C1C8B3BBD6CE39067AD0 /* Pods-Rudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rudy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rudy/Pods-Rudy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +59,7 @@
 			files = (
 				A9FC068E20512FF50076BB2A /* GTMSessionFetcher.framework in Frameworks */,
 				226EFFA11E1BBBCA00B1D185 /* MapKit.framework in Frameworks */,
-				67439F8E00F782106B04C0F2 /* Pods_Rudy.framework in Frameworks */,
+				E1D330ED37A4CB2AE59E4303 /* Pods_Rudy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,8 +105,8 @@
 				A9FC069020518BA80076BB2A /* GoogleService-Info.plist */,
 				22A92BAF1D59EBD6005D76F7 /* QuickChat */,
 				22A92BAE1D59EBD6005D76F7 /* Products */,
-				ADD6E8E924E29AFE4DBB9FB3 /* Pods */,
 				5923406597F4A9DB000B8FF9 /* Frameworks */,
+				E8552669F4ECDD5E10271CA1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,19 +138,16 @@
 			children = (
 				A9FC068F20512FF50076BB2A /* GTMSessionFetcher.framework */,
 				226EFFA01E1BBBCA00B1D185 /* MapKit.framework */,
-				B8041C4B4A9DA4F0F53D2BDE /* Pods_QuickChat.framework */,
-				B835296E759A7579F40C0F51 /* Pods_Rudy.framework */,
+				28E6ABFC346E5F13494C8F75 /* Pods_Rudy.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		ADD6E8E924E29AFE4DBB9FB3 /* Pods */ = {
+		E8552669F4ECDD5E10271CA1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				614F8B4888358059B3DC166B /* Pods-QuickChat.debug.xcconfig */,
-				B8FBFCFF82B6EB57B02FA375 /* Pods-QuickChat.release.xcconfig */,
-				781934A655AA64CC1F45745E /* Pods-Rudy.debug.xcconfig */,
-				D781C1C8B3BBD6CE39067AD0 /* Pods-Rudy.release.xcconfig */,
+				026AB75135EEBD12E2BD758D /* Pods-Rudy.debug.xcconfig */,
+				A454FECA792BDFCE0078622F /* Pods-Rudy.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -165,12 +159,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22A92BBF1D59EBD6005D76F7 /* Build configuration list for PBXNativeTarget "Rudy" */;
 			buildPhases = (
-				0E741B6EDD8AFBD5853F3B88 /* [CP] Check Pods Manifest.lock */,
+				12022359DB03CD4A3DB50DB5 /* [CP] Check Pods Manifest.lock */,
 				22A92BA91D59EBD5005D76F7 /* Sources */,
 				22A92BAA1D59EBD5005D76F7 /* Frameworks */,
 				22A92BAB1D59EBD5005D76F7 /* Resources */,
-				62D3364F6C35C0B3DF08236F /* [CP] Embed Pods Frameworks */,
-				59C78960725AB64FF0FC6829 /* [CP] Copy Pods Resources */,
+				2C74ED34FAB3CDDC5734A085 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -241,16 +234,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0E741B6EDD8AFBD5853F3B88 /* [CP] Check Pods Manifest.lock */ = {
+		12022359DB03CD4A3DB50DB5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Rudy-checkManifestLockResult.txt",
 			);
@@ -259,37 +256,32 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		59C78960725AB64FF0FC6829 /* [CP] Copy Pods Resources */ = {
+		2C74ED34FAB3CDDC5734A085 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rudy/Pods-Rudy-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		62D3364F6C35C0B3DF08236F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Rudy/Pods-Rudy-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -427,7 +419,7 @@
 		};
 		22A92BC01D59EBD6005D76F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 781934A655AA64CC1F45745E /* Pods-Rudy.debug.xcconfig */;
+			baseConfigurationReference = 026AB75135EEBD12E2BD758D /* Pods-Rudy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -445,7 +437,7 @@
 		};
 		22A92BC11D59EBD6005D76F7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D781C1C8B3BBD6CE39067AD0 /* Pods-Rudy.release.xcconfig */;
+			baseConfigurationReference = A454FECA792BDFCE0078622F /* Pods-Rudy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

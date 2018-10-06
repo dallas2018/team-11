@@ -155,11 +155,24 @@ class Message {
                 let child = UUID().uuidString
                 Storage.storage().reference().child("messagePics").child(child).putData(imageData!, metadata: nil, completion: { (metadata, error) in
                     if error == nil {
-                        let path = metadata?.downloadURL()?.absoluteString
-                        let values = ["type": "photo", "content": path!, "fromID": currentUserID, "toID": toID, "timestamp": message.timestamp, "isRead": false] as [String : Any]
-                        Message.uploadMessage(withValues: values, toID: toID, completion: { (status) in
-                            completion(status)
-                        })
+                        
+                        let storageRef = Storage.storage().reference().child("messagePics").child(child)
+                        
+                        storageRef.downloadURL { (url, error) in
+                            guard let path = url else {
+                                // Uh-oh, an error occurred!
+                                return
+                            }
+                            let stringPath = path.absoluteString
+                            
+                            let values = ["type": "photo", "content": stringPath, "fromID": currentUserID, "toID": toID, "timestamp": message.timestamp, "isRead": false] as [String : Any]
+                            Message.uploadMessage(withValues: values, toID: toID, completion: { (status) in
+                                completion(status)
+                            })
+                        }
+                        
+//                        let path = metadata?.downloadURL()?.absoluteString
+                        
                     }
                 })
             case .text:
