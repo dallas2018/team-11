@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickChat/ViewControllers/ChatVC.swift"
+            timestampString = "560501623.51621"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "ChatVC"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Rudy.ChatVC.inputTextField.getter : weak Swift.Optional&lt;__C.UITextField&gt;"
+                  moduleName = "Rudy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexyang/Desktop/Projects/codeforgood/team-11/QuickChat/ViewControllers/ChatVC.swift"
+                  timestampString = "560491564.241846"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Rudy.ChatVC.inputTextField.setter : weak Swift.Optional&lt;__C.UITextField&gt;"
+                  moduleName = "Rudy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexyang/Desktop/Projects/codeforgood/team-11/QuickChat/ViewControllers/ChatVC.swift"
+                  timestampString = "560491564.243715"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Rudy.ChatVC.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Rudy.ChatVC"
+                  moduleName = "Rudy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexyang/Desktop/Projects/codeforgood/team-11/QuickChat/ViewControllers/ChatVC.swift"
+                  timestampString = "560491564.245852"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "270">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Rudy.ChatVC.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Rudy.ChatVC&gt;"
+                  moduleName = "Rudy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexyang/Desktop/Projects/codeforgood/team-11/QuickChat/ViewControllers/ChatVC.swift"
+                  timestampString = "560491564.248203"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "234">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
